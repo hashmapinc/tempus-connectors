@@ -54,11 +54,12 @@ public class MqttUtility {
         this.accessToken = accessToken;
     }
 
-    public void connect(String mqttUrl) throws MqttException{
+    public MqttAsyncClient connect() throws MqttException{
         MqttAsyncClient client = new MqttAsyncClient(mqttUrl, MqttAsyncClient.generateClientId());
         MqttConnectOptions options = new MqttConnectOptions();
         options.setUserName(accessToken);
         client.connect(options);
+        return client;
     }
 
 
