@@ -6,7 +6,7 @@
     <groupId>com.hashmapinc.tempus</groupId>
     <artifactId>tempus-connectors</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>Tempus Connectors</name>
     <description>Provides mqtt and json validation utilities and connectors </description>
@@ -72,9 +72,9 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git://github.com/hashmapinc/Tempus-kubeless-utility.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:hashmapinc/Tempus-kubeless-utility.git</developerConnection>
-        <url>https://github.com/hashmapinc/witsml-client/tree/master</url>
+        <connection>scm:git:git://github.com/hashmapinc/tempus-connectors.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:hashmapinc/tempus-connectors.git</developerConnection>
+        <url>https://github.com/hashmapinc/tempus-connectors/tree/master</url>
     </scm>
 
     <profiles>

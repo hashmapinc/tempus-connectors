@@ -14,67 +14,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.hashmapinc.tempus.InputParserUtility;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.IOException;
 import java.util.Collections;
 
 public class InputParserUtilityTest {
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
     @Test
-    public void validateCorrectJson() {
+    public void validateCorrectJson() throws IOException {
         InputParserUtility inputParserUtility = new InputParserUtility();
         String jsonStr = "{\"id\":\"1\", \"ts\":\"45676\"}";
-        try {
-            Assert.assertEquals(inputParserUtility.validateJson(jsonStr),true);
-        } catch (IOException e) {
-
-        }
+        Assert.assertEquals(inputParserUtility.validateJson(jsonStr),true);
     }
 
     @Test
-    public void validateInCorrectJsonThrowsException() {
+    public void validateInCorrectJsonThrowsException() throws IOException {
+        exception.expect(JsonEOFException.class);
         InputParserUtility inputParserUtility = new InputParserUtility();
         String jsonStr = "{\"id\":\"1\", \"ts\":\"45676}";
-        try {
-            inputParserUtility.validateJson(jsonStr);
-            Assert.fail();
-        } catch (IOException e) {
-            Assert.assertTrue(true);
-        }
+        inputParserUtility.validateJson(jsonStr);
     }
 
     @Test
-    public void validateCorrectJsonWithDsAndTs() {
+    public void validateCorrectJsonWithDsAndTs() throws IOException {
         InputParserUtility inputParserUtility = new InputParserUtility();
         String jsonStr = "{\"id\":\"1\", \"ts\":\"45676\", \"ds\":\"3000\"}";
-        try {
-            Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.EMPTY_LIST),false);
-        } catch (IOException e) {
+        Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.EMPTY_LIST),false);
 
-        }
     }
 
     @Test
-    public void validateCorrectJsonWithAddedKey() {
+    public void validateCorrectJsonWithAddedKey() throws IOException {
         InputParserUtility inputParserUtility = new InputParserUtility();
         String jsonStr = "{\"id\":\"1\", \"ts\":\"45676\", \"key\":\"val\"}";
-        try {
-            Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.singletonList("key")),true);
-        } catch (IOException e) {
-
-        }
+        Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.singletonList("key")),true);
     }
 
     @Test
-    public void validateCorrectJsonWithoutAddedKey() {
+    public void validateCorrectJsonWithoutAddedKey() throws IOException {
         InputParserUtility inputParserUtility = new InputParserUtility();
         String jsonStr = "{\"id\":\"1\", \"ts\":\"45676\"}";
-        try {
-            Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.singletonList("key")),false);
-        } catch (IOException e) {
-
-        }
+        Assert.assertEquals(inputParserUtility.validateJson(jsonStr, Collections.singletonList("key")),false);
     }
 }
