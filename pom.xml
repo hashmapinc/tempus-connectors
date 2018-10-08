@@ -6,7 +6,7 @@
     <groupId>com.hashmapinc.tempus</groupId>
     <artifactId>tempus-connectors</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Tempus Connectors</name>
     <description>Provides mqtt and json validation utilities and connectors </description>

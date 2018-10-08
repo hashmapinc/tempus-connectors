@@ -1,4 +1,4 @@
-package com.hashmapinc.kubeless;
+package com.hashmapinc.tempus;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

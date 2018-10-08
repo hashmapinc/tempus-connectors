@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import com.hashmapinc.kubeless.InputParserUtility;
+import com.hashmapinc.tempus.InputParserUtility;
 import org.junit.Assert;
 import org.junit.Test;
 
