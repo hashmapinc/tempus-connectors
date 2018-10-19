@@ -4,12 +4,12 @@ Repo for library that allows kubeless to communicate with Tempus.
 
 There are two utilities provided in this repo:
 
-##InputParserUtility
+## InputParserUtility
 
 It is used to parse the json data with some mandatory parameters/fields. "id" and either "ts" or "ds" are mandatory parameters in the json.
 The user can add more fields whose presence he wants to validate. Refer to code snippet. Here "key" is extra field which the user wants to validate.
 
-```
+```java
     import com.hashmapinc.tempus.InputParserUtility;
 
     InputParserUtility inputParserUtility = new InputParserUtility();
@@ -17,7 +17,7 @@ The user can add more fields whose presence he wants to validate. Refer to code 
             inputParserUtility.validateJson(jsonStr, Collections.singletonList("key"));
 ```
 
-##MqttConnector
+## MqttConnector
 
 It is used to publish timeseries and depthseries data to tempus through a gateway device via mqtt.
 The json format for timeseries data to be published is
